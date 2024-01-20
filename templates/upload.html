@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Upload</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .content-wrap {
+             min-height: calc(100% - 40px); /* Adjust 40px to footer's height */
+             padding-bottom: 40px; /* Same as footer's height */
+        }
+        
+        header {
+            background: #005f73;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        form {
+            background: #fff;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="file"] {
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #005f73;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #004a5e;
+        }
+
+        .footer {
+            height: 40px; /* Footer's height */
+            position: relative;
+            width: 100%;
+            background: #005f73;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Upload Ceramic Fragment</h1>
+    </header>
+
+    <div class="container">
+        <form action="/uploader" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" required>
+            <input type="submit" value="Upload">
+        </form>
+    </div>
+
+    <div class="footer">
+        <p>© 2023 UNIVERSITY OF MICHIGAN - DEARBORN</p>
+    </div>
+</body>
+</html>

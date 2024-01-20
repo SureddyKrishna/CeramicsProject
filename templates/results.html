@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Matching Results</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+            
+        }
+
+        .content-wrap {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+            min-height: calc(100% - 40px); /* Adjust 40px to footer's height */
+            padding-bottom: 40px; /* Same as footer's height */
+        }
+
+        header {
+            background: #005f73;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .image-section {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .image-section h2 {
+            color: #005f73;
+            margin-bottom: 10px;
+        }
+
+        img {
+            
+            width: 300px;
+            height: 300px;
+            border: 3px solid #005f73;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer {
+            height: 40px; /* Footer's height */
+            position: relative;
+            width: 100%;
+            background: #005f73;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        a {
+            color: #005f73;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            display: block;
+            width: fit-content;
+            margin: 20px auto;
+            padding: 10px 15px;
+            background-color: #005f73;
+            color: #fff;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ceramic Pattern Match Result</h1>
+    </header>
+
+    <div class="container">
+        <div class="row">
+        <div class="column">
+            <h2>Uploaded Fragment</h2>
+            <img src="{{ url_for('send_upload', filename=fragment.split('/')[-1]) }}" alt="Uploaded fragment">
+        </div>
+        <div class="column">
+            <h2>Best Match Image</h2>
+            <img src="{{ url_for('send_full_image', filename=best_match.split('/')[-1]) }}" alt="Best match">
+            <p>Best Match File Name: {{ best_match.split('/')[-1] }}</p>
+            <!-- <p>Match Count: {{ match_count }}</p> -->
+            <a href="/">Upload another image</a>
+            <!-- Button to Transferware Club -->
+            {% set pattern_id = best_match.split('/')[-1].replace('.jpg', '') %}
+            <a href="https://db.transferwarecollectorsclub.org/patterns/?q={{ pattern_id }}&pattern_number_only=1" class="back-link" target="_blank">Look in Transferware Club</a>
+        </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>© 2023 UNIVERSITY OF MICHIGAN - DEARBORN</p>
+    </div>
+</body>
+</html>
